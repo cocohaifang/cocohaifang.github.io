@@ -92,7 +92,7 @@ Quick">
 <meta property="og:site_name" content="Cocohaifang's blog">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 Quick">
-<meta property="og:updated_time" content="2016-08-25T08:56:24.437Z">
+<meta property="og:updated_time" content="2016-08-25T08:59:27.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oralce常用命令">
 <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
@@ -280,13 +280,13 @@ Quick">
 
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>##1.lsnrctl  查询oracle监听的命令，一些函数处理请见附件~</p>
-<p>##2.查询被锁记录，并杀进程解锁社保工作日志汇总(20120330).xls<br>select sess.sid,<br>sess.serial#,<br>lo.oracle_username,<br>lo.os_user_name,<br>ao.object_name,<br>lo.locked_mode<br>from v$locked_object lo,<br>dba_objects ao,<br>v$session sess<br>where ao.object_id = lo.object_id and lo.session_id = sess.sid;</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>###lsnrctl  查询oracle监听的命令，一些函数处理请见附件~</p>
+<p>###查询被锁记录，并杀进程解锁社保工作日志汇总(20120330).xls<br>select sess.sid,<br>sess.serial#,<br>lo.oracle_username,<br>lo.os_user_name,<br>ao.object_name,<br>lo.locked_mode<br>from v$locked_object lo,<br>dba_objects ao,<br>v$session sess<br>where ao.object_id = lo.object_id and lo.session_id = sess.sid;</p>
 <p>alter system kill session ‘738,1429’;</p>
-<p>##3.表分析;<br>analyze table xx compute statistics;</p>
-<p>##4.闪回查询：<br>select * from xx as of timestamp(sysdate- interval ‘2’ hour)</p>
-<p>##3.查询消耗CPU比较高的SQL处理办法<br>    通过topas  找出占用CPU比例高的进程，通过以下SQL找出对应SQL<br>    Select s.machine,s.program,l.* from v$sql l ,v$session s ,v$process p<br>where l.sql_id=s.sql_id<br>And s.paddr=p.addr<br>And p.spid=’33554556’</p>
-<p>##2.oracle查询用户信息</p>
+<p>###表分析;<br>analyze table xx compute statistics;</p>
+<p>###闪回查询：<br>select * from xx as of timestamp(sysdate- interval ‘2’ hour)</p>
+<p>###查询消耗CPU比较高的SQL处理办法<br>    通过topas  找出占用CPU比例高的进程，通过以下SQL找出对应SQL<br>    Select s.machine,s.program,l.* from v$sql l ,v$session s ,v$process p<br>where l.sql_id=s.sql_id<br>And s.paddr=p.addr<br>And p.spid=’33554556’</p>
+<p>###oracle查询用户信息</p>
 <pre><code>###2.1.查询oracle中所有用户信息
    select * from dba_users;
 ###2.2. 只查询用户和密码
