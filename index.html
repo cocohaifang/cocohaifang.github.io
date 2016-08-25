@@ -283,14 +283,14 @@
         
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>###lsnrctl  查询oracle监听的命令，一些函数处理请见附件~</p>
-<p>###查询被锁记录，并杀进程解锁社保工作日志汇总(20120330).xls<br>select sess.sid,<br>sess.serial#,<br>lo.oracle_username,<br>lo.os_user_name,<br>ao.object_name,<br>lo.locked_mode<br>from v$locked_object lo,<br>dba_objects ao,<br>v$session sess<br>where ao.object_id = lo.object_id and lo.session_id = sess.sid;</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><h3 id="lsnrctl-查询oracle监听的命令，一些函数处理请见附件"><a href="#lsnrctl-查询oracle监听的命令，一些函数处理请见附件" class="headerlink" title="lsnrctl  查询oracle监听的命令，一些函数处理请见附件~"></a>lsnrctl  查询oracle监听的命令，一些函数处理请见附件~</h3><h3 id="查询被锁记录，并杀进程解锁社保工作日志汇总-20120330-xls"><a href="#查询被锁记录，并杀进程解锁社保工作日志汇总-20120330-xls" class="headerlink" title="查询被锁记录，并杀进程解锁社保工作日志汇总(20120330).xls"></a>查询被锁记录，并杀进程解锁社保工作日志汇总(20120330).xls</h3><p>select sess.sid,<br>sess.serial#,<br>lo.oracle_username,<br>lo.os_user_name,<br>ao.object_name,<br>lo.locked_mode<br>from v$locked_object lo,<br>dba_objects ao,<br>v$session sess<br>where ao.object_id = lo.object_id and lo.session_id = sess.sid;</p>
 <p>alter system kill session ‘738,1429’;</p>
-<p>###表分析;<br>analyze table xx compute statistics;</p>
-<p>###闪回查询：<br>select * from xx as of timestamp(sysdate- interval ‘2’ hour)</p>
-<p>###查询消耗CPU比较高的SQL处理办法<br>    通过topas  找出占用CPU比例高的进程，通过以下SQL找出对应SQL<br>    Select s.machine,s.program,l.* from v$sql l ,v$session s ,v$process p<br>where l.sql_id=s.sql_id<br>And s.paddr=p.addr<br>And p.spid=’33554556’</p>
-<p>###oracle查询用户信息</p>
-<pre><code>###2.1.查询oracle中所有用户信息
+<h3 id="表分析"><a href="#表分析" class="headerlink" title="表分析;"></a>表分析;</h3><p>analyze table xx compute statistics;</p>
+<h3 id="闪回查询："><a href="#闪回查询：" class="headerlink" title="闪回查询："></a>闪回查询：</h3><p>select * from xx as of timestamp(sysdate- interval ‘2’ hour)</p>
+<h3 id="查询消耗CPU比较高的SQL处理办法"><a href="#查询消耗CPU比较高的SQL处理办法" class="headerlink" title="查询消耗CPU比较高的SQL处理办法"></a>查询消耗CPU比较高的SQL处理办法</h3><pre><code>通过topas  找出占用CPU比例高的进程，通过以下SQL找出对应SQL
+Select s.machine,s.program,l.* from v$sql l ,v$session s ,v$process p
+</code></pre><p>where l.sql_id=s.sql_id<br>And s.paddr=p.addr<br>And p.spid=’33554556’</p>
+<h3 id="oracle查询用户信息"><a href="#oracle查询用户信息" class="headerlink" title="oracle查询用户信息"></a>oracle查询用户信息</h3><pre><code>###2.1.查询oracle中所有用户信息
    select * from dba_users;
 ###2.2. 只查询用户和密码
    select username,password from dba_users;
@@ -324,7 +324,7 @@
 <p>  ###2.24查看函数和过程的源代码<br>　　select text from all_source where owner=user and name=’SF_SPLIT_STRING’</p>
 <p> ###2.25查看表字段<br>　　select cname from col where tname=’ZW_YINGYEZ’<br>　　select column_name from user_tab_columns where table_name=’ZW_YINGYEZ’</p>
 <p>###2.26查看表的授权信息<br>     2.26.1查询jysi下所有表对jyjmyal,jybzd用户授权信息<br>     select <em> from user_tab_privs WHERE owner=’JYSI’ AND grantee  IN (‘JYJMYAL’,’JYBZD’);<br>    2.26.2查询jyjmyal下所有表对jysi,jybzd用户的授权信息。<br>     select </em> from user_tab_privs WHERE owner=’JYJMYAL’ AND grantee  IN (‘JYSI’,’JYBZD’);<br>     2.26.3查询jybzd下所有表对jysi,jyjmyal用户的授权信息。<br>   select * from user_tab_privs WHERE owner=’JYBZD’ AND grantee IN (‘JYSI’,’JYJMYAL’);</p>
-<p>##3.查看SQL执行进度<br>SELECT SE.SID,<br>OPNAME,<br> TRUNC(SOFAR / TOTALWORK <em> 100, 2) || ‘%’ AS PCT_WORK,<br> ELAPSED_SECONDS ELAPSED,<br> ROUND(ELAPSED_SECONDS </em> (TOTALWORK - SOFAR) / SOFAR) REMAIN_TIME,<br> SQL_TEXT<br> FROM V$SESSION_LONGOPS SL, V$SQLAREA SA, V$SESSION SE<br> WHERE SL.SQL_HASH_VALUE = SA.HASH_VALUE<br> AND SL.SID = SE.SID<br> AND SOFAR != TOTALWORK<br> ORDER BY START_TIME</p>
+<h2 id="3-查看SQL执行进度"><a href="#3-查看SQL执行进度" class="headerlink" title="3.查看SQL执行进度"></a>3.查看SQL执行进度</h2><p>SELECT SE.SID,<br>OPNAME,<br> TRUNC(SOFAR / TOTALWORK <em> 100, 2) || ‘%’ AS PCT_WORK,<br> ELAPSED_SECONDS ELAPSED,<br> ROUND(ELAPSED_SECONDS </em> (TOTALWORK - SOFAR) / SOFAR) REMAIN_TIME,<br> SQL_TEXT<br> FROM V$SESSION_LONGOPS SL, V$SQLAREA SA, V$SESSION SE<br> WHERE SL.SQL_HASH_VALUE = SA.HASH_VALUE<br> AND SL.SID = SE.SID<br> AND SOFAR != TOTALWORK<br> ORDER BY START_TIME</p>
 
           
         
